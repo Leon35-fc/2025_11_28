@@ -22,7 +22,7 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <h3 className='text-center mt-3'> L'App sta funzionando</h3>
+      <h3 className='text-center mt-3'>L'App sta funzionando</h3>
 
     </>
   )
