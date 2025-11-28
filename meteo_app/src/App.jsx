@@ -16,8 +16,9 @@ class App extends Component {
 
   setCity = ((city) => {
     this.setState({city})
+    console.log('Log di APP.jsx', city);
   })
-
+  
   render() {
     return (
       <>
@@ -30,11 +31,11 @@ class App extends Component {
           </Row>
           <Row className='d-flex justify-content-center mt-5'>
             <Col xs={12} md={10} lg={6}>
-              <CityMeteo city={this.state.city} setCity={this.setCity}/>
+              {this.city && <CityMeteo city={this.state.city} setCity={this.setCity}/>}
             </Col>
           </Row>
         </Container>
-        <h3 className='text-center mt-3'>L'App sta funzionando</h3>
+        {/* <h3 className='text-center mt-3'>L'App sta funzionando</h3> */}
 
       </>
     )

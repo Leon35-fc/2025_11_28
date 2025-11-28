@@ -7,7 +7,6 @@ import { Card, Button } from "react-bootstrap"
 function CityMeteo(props) {
 
     const [meteoCity, setMeteoCity] = useState({})
-
     
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${props.city},IT&appid=805d5542481df6408e63911f189b65b8&lang=it&units=metric`
         
@@ -17,27 +16,31 @@ function CityMeteo(props) {
             if(response.ok) {                
                 return response.json()
             } else {
-                throw new Error('Errore recupero informazioni meteo')
+                throw new Error('Errore nel recupero delle informazioni meteo')
             }})
             .then((meteo) => {
                 console.log('METEO FETCH', meteo);
                 setMeteoCity(meteo)
+                setLoading(false)
                 // CONTROLLO CHE
                 console.log('meteoCity', meteoCity.name);
-                return meteoCity
+                // return meteoCity
             })
             .catch((err) => {
             console.log('Errore', err)
+            setError(err.message)
+            setLoading(false)
             })
             
         }
 
-        useEffect(() => {meteoFetch()}, [URL])
+        useEffect(() => {meteoFetch()}, [props.city])
+        
 
     return(
         <>
             <h3 className="text-center">Dati meteo</h3>
-            <Card>
+            <Card >
             <Card.Body>
                 <Card.Title className="mb-3">{meteoCity.name}</Card.Title>
                 <Card.Text>
