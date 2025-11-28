@@ -6,26 +6,39 @@ import { Container, Row, Col } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar'
 import SelectCity from './components/SelectCity'
 import CityMeteo from './components/CityMeteo'
+import { Component } from 'react';
 
-function App() {
+class App extends Component {
 
-  return (
-    <>
-      <MyNavbar/>
-      <Container>
-        <Row>
-          <Col xs={12} className=''>
-            <SelectCity/>
-          </Col>
-          <Col xs={12} className=''>
-            <CityMeteo/>
-          </Col>
-        </Row>
-      </Container>
-      <h3 className='text-center mt-3'>L'App sta funzionando</h3>
+  state = {
+    city:'Berlino'
+  }
 
-    </>
-  )
+  setCity = ((city) => {
+    this.setState({city})
+  })
+
+  render() {
+    return (
+      <>
+        <MyNavbar/>
+        <Container>
+          <Row className='d-flex justify-content-center mt-5'>
+            <Col xs={12} md={10} lg={6} className=''>
+              <SelectCity city={this.state.city} setCity={this.setCity}/>
+            </Col>
+          </Row>
+          <Row className='d-flex justify-content-center mt-5'>
+            <Col xs={12} md={10} lg={6}>
+              <CityMeteo city={this.state.city} setCity={this.setCity}/>
+            </Col>
+          </Row>
+        </Container>
+        <h3 className='text-center mt-3'>L'App sta funzionando</h3>
+
+      </>
+    )
+  }
 }
 
 export default App
