@@ -2,16 +2,15 @@ import {Form} from 'react-bootstrap'
 
 function SelectCity(props) {
 
-  console.log('CONSOLE',props.city);
+  console.log('SelectCity: in entrata',props.city);
   
-
-  const cityChange = (event) => {
-    props.setCity(event.target.value)
-    console.log("cityChange", event.target.value);
-    
+  const cityChange = (e) => {
+    const newValue = e.target.value;
+    props.setCity(newValue);
+    console.log("cityChange", newValue); 
   }
 
-  console.log('SETCITY', cityChange);
+  console.log('SelectCity; dopo funzione cityChange', props.city);
    
   return (
     <>

@@ -7,6 +7,8 @@ import { Card, Button } from "react-bootstrap"
 function CityMeteo(props) {
 
     const [meteoCity, setMeteoCity] = useState({})
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
     
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${props.city},IT&appid=805d5542481df6408e63911f189b65b8&lang=it&units=metric`
         
@@ -33,14 +35,19 @@ function CityMeteo(props) {
             })
             
         }
-
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         useEffect(() => {meteoFetch()}, [props.city])
         
+        console.log(meteoCity);
+
+        if (loading) return <p>Caricamento...</p>
+        if (error) return <p>Errore: {error}</p>
 
     return(
         <>
-            <h3 className="text-center">Dati meteo</h3>
-            <Card >
+            <h3 className="text-center">Dati meteo della città</h3>
+            <Card className="border border-3 border-primary-subtle">
             <Card.Body>
                 <Card.Title className="mb-3">{meteoCity.name}</Card.Title>
                 <Card.Text>

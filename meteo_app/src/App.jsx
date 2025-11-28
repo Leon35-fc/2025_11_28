@@ -2,16 +2,17 @@ import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.min.css'
 import '../node_modules/react-router-dom'
+import { Component, } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar'
 import SelectCity from './components/SelectCity'
 import CityMeteo from './components/CityMeteo'
-import { Component } from 'react';
+
 
 class App extends Component {
 
   state = {
-    city:'Berlino'
+    city:''
   }
 
   setCity = ((city) => {
@@ -25,13 +26,13 @@ class App extends Component {
         <MyNavbar/>
         <Container>
           <Row className='d-flex justify-content-center mt-5'>
-            <Col xs={12} md={10} lg={6} className=''>
+            <Col xs={12} md={10} lg={4} className=''>
               <SelectCity city={this.state.city} setCity={this.setCity}/>
             </Col>
           </Row>
           <Row className='d-flex justify-content-center mt-5'>
-            <Col xs={12} md={10} lg={6}>
-              {this.city && <CityMeteo city={this.state.city} setCity={this.setCity}/>}
+            <Col xs={12} md={10} lg={4}>
+              {this.state.city && <CityMeteo city={this.state.city} setCity={this.setCity}/>}
             </Col>
           </Row>
         </Container>
