@@ -7,6 +7,12 @@ function Details (props) {
     const [meteoCity, setMeteoCity] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+
+        if (props.city !== 'Seleziona una città') {
+            props.city
+        } else {
+            props.setCity('')
+        }
     
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${props.city},IT&appid=805d5542481df6408e63911f189b65b8&lang=it&units=metric`
         

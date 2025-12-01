@@ -1,4 +1,4 @@
-import {Form} from 'react-bootstrap'
+import {Form } from 'react-bootstrap'
 
 function SelectCity(props) {
 
@@ -10,10 +10,10 @@ function SelectCity(props) {
     console.log("cityChange", newValue)
   }
 
-  const handleSubmit= (e)=> {
-    e.preventDefault()
-    cityChange(e)
-  }
+  // const handleSubmit= (e)=> {
+  //   e.preventDefault()
+  //   cityChange()
+  // }
 
   console.log('SelectCity; dopo funzione cityChange', props.city)
    
@@ -27,7 +27,7 @@ function SelectCity(props) {
         <option value="Napoli">Napoli</option>
         <option value="Roma">Roma</option>
       </Form.Select>
-      <Form onSubmit={handleSubmit}>
+      {/* <Form onSubmit={handleSubmit}>
        <Form.Control
         type="text"
         id="city"
@@ -36,7 +36,7 @@ function SelectCity(props) {
         // onSubmit={props.setCity}
         placeholder="Inserisci il nome di una città"
       />
-      </Form>
+      </Form> */}
     </>
   );
 }

@@ -10,7 +10,7 @@ function MyNavbar() {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#">Link</Nav.Link>
+                <Nav.Link href="#link">Link</Nav.Link>
 
                 {/* AL MOMENTO QUESTA PARTE NON MI SERVE, SE NE PARLA QUANDO TROVERO UN'UTILITA */}
 
