@@ -7,8 +7,14 @@ span{
 }
 
 .card-text:hover{
-    transform: scale(1.02);
-    transition: transform .3s;
+    padding-left: 1em;
+    background-color: rgba(0, 0, 255, 0.25);
+    border-radius: 20px;
+    /* transform: scale(1.01); */
+    transition: 
+        /* transform .9s,  */
+        background-color 0.2s, 
+        padding-left 0.4s;
 }
 
 button.btn.btn-primary:hover {
