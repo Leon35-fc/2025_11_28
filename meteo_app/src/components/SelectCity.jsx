@@ -2,15 +2,20 @@ import {Form} from 'react-bootstrap'
 
 function SelectCity(props) {
 
-  console.log('SelectCity: in entrata',props.city);
+  // console.log('SelectCity: in entrata',props.city.target.value)
   
   const cityChange = (e) => {
-    const newValue = e.target.value;
-    props.setCity(newValue);
-    console.log("cityChange", newValue); 
+    const newValue = e.target.value
+    props.setCity(newValue)
+    console.log("cityChange", newValue)
   }
 
-  console.log('SelectCity; dopo funzione cityChange', props.city);
+  const handleSubmit= (e)=> {
+    e.preventDefault()
+    cityChange(e)
+  }
+
+  console.log('SelectCity; dopo funzione cityChange', props.city)
    
   return (
     <>
@@ -22,8 +27,17 @@ function SelectCity(props) {
         <option value="Napoli">Napoli</option>
         <option value="Roma">Roma</option>
       </Form.Select>
+      <Form onSubmit={handleSubmit}>
+       <Form.Control
+        type="text"
+        id="city"
+        value={props.city}
+        onChange={cityChange}
+        // onSubmit={props.setCity}
+        placeholder="Inserisci il nome di una città"
+      />
+      </Form>
     </>
   );
 }
-
 export default SelectCity;

@@ -7,6 +7,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import MyNavbar from './components/MyNavbar'
 import SelectCity from './components/SelectCity'
 import CityMeteo from './components/CityMeteo'
+import Details from './components/Details'
+import { BrowserRouter, Route, Routes } from '../node_modules/react-router-dom';
 
 
 class App extends Component {
@@ -26,13 +28,18 @@ class App extends Component {
         <MyNavbar/>
         <Container>
           <Row className='d-flex justify-content-center mt-5'>
-            <Col xs={12} md={10} lg={4} className=''>
+            <Col xs={11} md={10} lg={4} className=''>
               <SelectCity city={this.state.city} setCity={this.setCity}/>
             </Col>
           </Row>
           <Row className='d-flex justify-content-center mt-5'>
-            <Col xs={12} md={10} lg={4}>
-              {this.state.city && <CityMeteo city={this.state.city} setCity={this.setCity}/>}
+            <Col xs={11} md={10} lg={4}>
+            <BrowserRouter>
+              <Routes>
+                {this.state.city && <Route path='/' element={<CityMeteo city={this.state.city} setCity={this.setCity}/>}/>}
+                {this.state.city && <Route path='/details' element={<Details city={this.state.city} setCity={this.setCity}/>}/>}
+              </Routes>
+            </BrowserRouter>
             </Col>
           </Row>
         </Container>
